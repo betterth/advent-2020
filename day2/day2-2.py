@@ -18,12 +18,11 @@ def handle_input(file):
     return input_list
 
 def is_pass_valid(pass_string):
+    #pass_string e.g. "4-5 m: mpmmmm"
     position_string = pass_string.split(":")[0].split(" ")[0]
     #Their positions are not zero bound, so reduce by 1
-    position_one = int(position_string.split("-")[0])
-    position_one -= 1
-    position_two = int(position_string.split("-")[1])
-    position_two -= 1
+    position_one = int(position_string.split("-")[0])-1
+    position_two = int(position_string.split("-")[1])-1
     requirement = pass_string.split(":")[0].split(" ")[1]
     password = pass_string.split(":")[1].lstrip()
     answer = 0
