@@ -1,10 +1,9 @@
-#day 2 pt1 - password validation
+#day 2 pt1- password validation
 
 def main():
     #get iterable of input
     answer = 0
     input = handle_input()
-    #
     for line in input:
         if is_pass_valid(line):
             answer += 1
@@ -28,8 +27,6 @@ def is_pass_valid(pass_string):
     occurence = password.count(requirement)
     if range_low <= occurence <= range_high:
         return True
-    else:
-        return False
 
 if __name__ == "__main__":
     main()
