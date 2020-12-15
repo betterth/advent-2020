@@ -1,15 +1,15 @@
-#day 2 pt2- password validation again
+#day 3 both parts 
+# calculating slope / tree hits
 
-#slope = right3 down1
 def main():
     input = handle_input('input.txt')
-    slopes = [[1,1],[3,1],[5,1],[7,1],[1,2]]
+    slope_list = [[1,1],[3,1],[5,1],[7,1],[1,2]]
     answer = 1
-    for ele in slopes:
-        x = ele[0]
-        y = ele[1]
+    for slope in slope_list:
+        x = slope[0]
+        y = slope[1]
         iteration_result = check_problem(input,x,y)
-        print(ele,iteration_result)
+        print(slope,iteration_result)
         answer *= iteration_result
     print(answer)
 
