@@ -7,6 +7,7 @@ def main():
     passport_list = []
     #collect multi-line input into passport groups
     input = handle_input('input.txt')
+    #issue: doesn't process last element because last line isn't blank
     for line in input:
         if line == '':
             passport_list.append(" ".join(passport_lines).split(" "))
@@ -29,19 +30,31 @@ def main():
     print(valid_passports,total)
 
 def passport_is_valid(passport):
-    if "byr" not in passport:
+    #byr
+    byr = passport.get("byr")
+    if not byr: return False
+    if not 2002 >= int(byr) >= 1920: return False
+    #iyr
+    iyr = passport.get("iyr")
+    if not iyr: return False
+    if not 2020 >= int(iyr) >= 2010: return False
+    #
+    eyr = passport.get("eyr")
+    if not eyr: return False
+    if not 2030 >= int(eyr) >= 2020: return False
+    #   
+    hgt = passport.get("hgt")
+    if not hgt: return False
+    if hgt.find("cm"):
+        if not 193 >= int(hgt.replace("cm","")) >= 150: return False
+    elif hgt.find("in"):
+        if not 76 >= int(hgt.replace("in","")) >= 59: return False
+    #
+    if "hcl" not in passport:
         return False    
-    elif "iyr" not in passport:
+    if "ecl" not in passport:
         return False    
-    elif "eyr" not in passport:
-        return False        
-    elif "hgt" not in passport:
-        return False    
-    elif "hcl" not in passport:
-        return False    
-    elif "ecl" not in passport:
-        return False    
-    elif "pid" not in passport:
+    if "pid" not in passport:
         return False   
     else:
         return True     
