@@ -25,9 +25,7 @@ def check_problem(map,slope_x,slope_y):
         if line[x_pos] == "#":
             hits += 1
         #move x position
-        x_pos += slope_x    
-        if x_pos >= x_max:
-            x_pos -= x_max
+        x_pos = x_pos + slope_x % x_max
     return hits
 
 def handle_input(file):
