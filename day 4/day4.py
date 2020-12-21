@@ -33,6 +33,7 @@ def passport_is_valid(passport):
     #byr
     byr = passport.get("byr")
     if not byr: return False
+    if not is_int(byr): return False
     if not 2002 >= int(byr) >= 1920: return False
     #iyr
     iyr = passport.get("iyr")
